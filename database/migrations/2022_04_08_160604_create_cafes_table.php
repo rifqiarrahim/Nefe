@@ -19,9 +19,9 @@ return new class extends Migration
             $table->integer('rating');
             $table->integer('like');
             $table->string('address');
-            $table->longText('desciption');
+            $table->longText('description');
             $table->unsignedInteger('reviewId');
-            //$table->foreign('reviewId')->references('id')->on('reviews');
+            $table->timestamps();
         });
     }
 

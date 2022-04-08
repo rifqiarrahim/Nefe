@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CafeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,12 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
-Route::get('/login', function(){
+Route::get('/', [CafeController::class, 'index']);
+Route::get('/login', function () {
     return view('login');
 });
-Route::get('/register', function(){
+Route::get('/register', function () {
     return view('register');
 });
