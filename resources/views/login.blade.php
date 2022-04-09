@@ -15,7 +15,7 @@
         <div class="col-6">
             <form action="/login" method="POST">
                 @csrf
-                <h5 class="display-5">Login</h5>
+                <h5 class="display-5"><a href="/" style="text-decoration: none;">KafeIn</a> Login</h5>
                 <div class="mb-3">
                     <label for="emailLabel" class="form-label">Email address</label>
                     <input type="email" class="form-control @error('email') is-invalid @enderror" id="emailLabel" name="email" value="{{ old('email')}}" autofocus>
