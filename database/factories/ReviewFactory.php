@@ -17,8 +17,9 @@ class ReviewFactory extends Factory
     public function definition()
     {
         return [
-            'userId' => mt_rand(1, 15),
+            'user_id' => mt_rand(1, 15),
             'comment' => $this->faker->sentence(mt_rand(2, 8)),
+            'cafe_id' => mt_rand(1, 30),
             'created_at' => $this->faker->dateTimeThisYear(),
             'updated_at' => $this->faker->dateTimeThisYear(),
         ];

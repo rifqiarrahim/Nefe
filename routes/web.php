@@ -3,6 +3,7 @@
 use App\Http\Controllers\CafeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +18,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [CafeController::class, 'index']);
+Route::get('/cafe/{id}', [CafeController::class, 'show'])->middleware('auth');
+Route::post('/cafe/{id}', [ReviewController::class, 'store'])->middleware('auth');
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);

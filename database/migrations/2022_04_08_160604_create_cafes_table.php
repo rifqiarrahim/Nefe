@@ -20,7 +20,6 @@ return new class extends Migration
             $table->integer('like');
             $table->string('address');
             $table->longText('description');
-            $table->unsignedInteger('reviewId');
             $table->timestamps();
         });
     }

@@ -22,7 +22,6 @@ class CafeFactory extends Factory
             'like' => $this->faker->numberBetween(0, 1000),
             'address' => $this->faker->sentence(mt_rand(2, 8)),
             'description' => $this->faker->paragraph(),
-            'reviewId' => mt_rand(1, 15),
             'created_at' => $this->faker->dateTimeThisYear(),
             'updated_at' => $this->faker->dateTimeThisYear(),
         ];

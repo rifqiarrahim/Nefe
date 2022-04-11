@@ -14,4 +14,10 @@ class CafeController extends Controller
 
         return view('home', compact('dbCafe'));
     }
+    public function show($id)
+    {
+        return view('cafe', [
+            "Cafe" => cafe::find($id),
+        ]);
+    }
 }
