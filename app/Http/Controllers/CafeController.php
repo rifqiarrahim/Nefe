@@ -10,10 +10,17 @@ class CafeController extends Controller
 {
     public function index()
     {
-        $dbCafe = cafe::paginate(9);
+        $dbCafe = cafe::latest();
 
-        return view('home', compact('dbCafe'));
+        if (request('search')) {
+            $dbCafe->where('name', 'like', '%' . request('search') . '%');
+        }
+
+        return view('home', [
+            "dbCafe" => $dbCafe -> paginate(9)
+        ]);
     }
+    
     public function show($id)
     {
         return view('cafe', [

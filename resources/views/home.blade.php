@@ -27,19 +27,18 @@
             <div class="container-fluid">
                 <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNavAltMarkup">
                     <ul class="navbar-nav" id="itemNav">
+                        @auth
+                        <li class="nav-item">
+                            <form action="/logout" method="POST">
+                                @csrf
+                                <button type="submit" class="nav-link btn"><a style="text-decoration: none;">Logout</a></button>
+                            </form>
+                        </li>
+                        @else
                         <li class="nav-item">
                             <a class="nav-link btn" href="/register">Register</a>
                         </li>
                         <div class="vr"></div>
-                        @auth
-                        <li class="nav-item">
-                            <a class="nav-link btn" href="/login">Login</a>
-                            <form action="/logout" method="POST">
-                                @csrf
-                                <button type="submit" class="nav-link btn">logout</button>
-                            </form>
-                        </li>
-                        @else
                         <li class="nav-item">
                             <a class="nav-link btn" href="/login">Login</a>
                         </li>
@@ -57,41 +56,47 @@
             <p class="col-md-8 fs-4 ">Gen Z's solutions for a fellow Gen Z</p>
             <div class="row">
                 <div class="col-5" id="searchBox">
-                    <div class="input-group">
-                        <input type="text" class="form-control border-end-0" placeholder="Cari Kafe Mu!">
-                        <div class="input-group-append">
-                            <div class="input-group-text bg-white border-start-0 border-end-0 rounded-end" style="margin-left:-1px"><i class="bi bi-search"></i></div>
+                    <form action="/">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Cari Kafe mu disini!" name="search" value="{{ request('search') }}">
+                            <button class="btn btn-light bi bi-search" type="submit"></button>
                         </div>
-                    </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="container mt-3" id="cardCont">
-        <div class="row">
-            <div class="col d-flex justify-content-center">
-                <h2>Find a Cafe here!</h2>
-            </div>
-        </div>
-        <div class="row row-cols-1 row-cols-md-3 g-4 mt-3">
-            @foreach($dbCafe as $cf)
-            <div class="col">
-                <div class="card h-20">
-                    <img class="card-img-top" src="{{ asset('/img/DSC_0331 (Small).jpg') }}" alt="" style="height: 500px;">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $cf["name"] }}</h5>
-                        <p class="card-text"><i class="bi bi-star-fill"></i>{{ $cf["rating"] }}</p>
-                        <a class="btn btn-success" href="/cafe/{{$cf['id']}}" role="button">Detail</a>
-                    </div>
+        <div class="container mt-3" id="cardCont">
+            <div class="row">
+                <div class="col d-flex justify-content-center">
+                    <h2>Find a Cafe here!</h2>
                 </div>
             </div>
-            @endforeach
+
+            @if($dbCafe->count())
+                <div class="row row-cols-1 row-cols-md-3 g-4 mt-3">
+                    @foreach($dbCafe as $cf)
+                    <div class="col">
+                        <div class="card h-20">
+                            <img class="card-img-top" src="{{ asset('/img/DSC_0331 (Small).jpg') }}" alt="" style="height: 500px;">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $cf["name"] }}</h5>
+                                <p class="card-text"><i class="bi bi-star-fill"></i>{{ $cf["rating"] }}</p>
+                                <a class="btn btn-success" href="/cafe/{{$cf['id']}}" role="button">Detail</a>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+                <div class="pagination mt-3 justify-content-center">
+                    {{ $dbCafe->links() }}
+                </div>
+            @else
+                <p class="text-center fs-4">Yah, Gaada Cafe :(</p>
+            @endif
         </div>
-        <div class="pagination mt-3 justify-content-center">
-            {{ $dbCafe->links() }}
-        </div>
-    </div>
 
     <div class="container-fluid bg-secondary" id="footer">
         <div class="col justify-content-center d-flex">
