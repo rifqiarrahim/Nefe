@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -9,6 +10,11 @@ class review extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
+    static function getReviewbyCafe($id)
+    {
+        $reviews = DB::table('reviews')->where('cafe_id', $id)->get();
+        return $reviews;
+    }
     public function cafe()
     {
         return $this->belongsTo(cafe::class);
