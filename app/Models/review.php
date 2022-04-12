@@ -20,6 +20,11 @@ class review extends Model
         $rating = DB::table('reviews')->where('cafe_id', $id)->avg('rating');
         return round($rating, 1);
     }
+    static function getLike($id)
+    {
+        $rating = DB::table('reviews')->where('cafe_id', $id)->sum('like');
+        return round($rating, 1);
+    }
     public function cafe()
     {
         return $this->belongsTo(cafe::class);

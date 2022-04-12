@@ -18,7 +18,6 @@ class CafeFactory extends Factory
     {
         return [
             'name' => $this->faker->sentence(mt_rand(1, 2)),
-            'like' => $this->faker->numberBetween(0, 1000),
             'address' => $this->faker->sentence(mt_rand(2, 8)),
             'description' => $this->faker->paragraph(),
             'created_at' => $this->faker->dateTimeThisYear(),

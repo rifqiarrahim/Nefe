@@ -21,6 +21,7 @@ class ReviewFactory extends Factory
             'rating' => $this->faker->numberBetween(1, 5),
             'comment' => $this->faker->sentence(mt_rand(2, 8)),
             'cafe_id' => mt_rand(1, 30),
+            'like' => $this->faker->numberBetween(0, 1),
             'created_at' => $this->faker->dateTimeThisYear(),
             'updated_at' => $this->faker->dateTimeThisYear(),
         ];

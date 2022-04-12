@@ -30,7 +30,7 @@
         </div>
         <div class="col-md-6">
             <i class="bi bi-hand-thumbs-up-fill"></i>
-            {{$Cafe['like']}}
+            {{$like}}
             <h4>Likes</h4>
         </div>
     </div>
@@ -68,7 +68,7 @@
                     <div class="col-4">
                         {{-- https://laracasts.com/discuss/channels/general-discussion/how-i-can-get-selected-value-option --}}
                         {{-- Coba check link diatas buat ambil value di select input --}}
-                        <select class="form-select" name="rate">
+                        <select class="form-select" name="rating">
                             <option value="1">One Star</option>
                             <option value="2">Two Stars</option>
                             <option value="3">Three Stars</option>

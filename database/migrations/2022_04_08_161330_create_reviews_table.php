@@ -17,6 +17,7 @@ return new class extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->integer('rating');
+            $table->integer('like');
             $table->longText('comment');
             $table->unsignedInteger('cafe_id');
             $table->timestamps();

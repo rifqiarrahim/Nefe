@@ -18,7 +18,7 @@ class CafeController extends Controller
         }
 
         return view('home', [
-            "dbCafe" => $dbCafe-> paginate(9)
+            "dbCafe" => $dbCafe->paginate(9)
         ]);
     }
 
@@ -27,6 +27,7 @@ class CafeController extends Controller
         return view('cafe', [
             "Cafe" => cafe::find($id),
             "rating" => review::getRating($id),
+            "like" => review::getLike($id),
         ]);
     }
 }

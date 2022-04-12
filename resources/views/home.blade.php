@@ -61,42 +61,41 @@
                             <input type="text" class="form-control" placeholder="Cari Kafe mu disini!" name="search" value="{{ request('search') }}">
                             <button class="btn btn-light bi bi-search" type="submit"></button>
                         </div>
-                        </div>
-                    </form>
                 </div>
+                </form>
             </div>
         </div>
     </div>
+    </div>
 
-        <div class="container mt-3" id="cardCont">
-            <div class="row">
-                <div class="col d-flex justify-content-center">
-                    <h2>Find a Cafe here!</h2>
+    <div class="container mt-3" id="cardCont">
+        <div class="row">
+            <div class="col d-flex justify-content-center">
+                <h2>Find a Cafe here!</h2>
+            </div>
+        </div>
+
+        @if($dbCafe->count())
+        <div class="row row-cols-1 row-cols-md-3 g-4 mt-3">
+            @foreach($dbCafe as $cf)
+            <div class="col">
+                <div class="card h-20">
+                    <img class="card-img-top" src="{{ asset('/img/DSC_0331 (Small).jpg') }}" alt="" style="height: 500px;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{$cf["name"]}}</h5>
+                        <a class="btn btn-success" href="/cafe/{{$cf['id']}}" role="button">Detail</a>
+                    </div>
                 </div>
             </div>
-
-            @if($dbCafe->count())
-                <div class="row row-cols-1 row-cols-md-3 g-4 mt-3">
-                    @foreach($dbCafe as $cf)
-                    <div class="col">
-                        <div class="card h-20">
-                            <img class="card-img-top" src="{{ asset('/img/DSC_0331 (Small).jpg') }}" alt="" style="height: 500px;">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $cf["name"] }}</h5>
-                                <p class="card-text"><i class="bi bi-star-fill"></i>{{ $cf["rating"] }}</p>
-                                <a class="btn btn-success" href="/cafe/{{$cf['id']}}" role="button">Detail</a>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-                <div class="pagination mt-3 justify-content-center">
-                    {{ $dbCafe->links() }}
-                </div>
-            @else
-                <p class="text-center fs-4">Yah, Gaada Cafe :(</p>
-            @endif
+            @endforeach
         </div>
+        <div class="pagination mt-3 justify-content-center">
+            {{ $dbCafe->links() }}
+        </div>
+        @else
+        <p class="text-center fs-4">Yah, Gaada Cafe :(</p>
+        @endif
+    </div>
 
     <div class="container-fluid bg-secondary" id="footer">
         <div class="col justify-content-center d-flex">
