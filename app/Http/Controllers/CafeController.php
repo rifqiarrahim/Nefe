@@ -18,7 +18,7 @@ class CafeController extends Controller
         }
 
         return view('home', [
-            "dbCafe" => $dbCafe->paginate(9)
+            "dbCafe" => $dbCafe-> paginate(9)
         ]);
     }
 

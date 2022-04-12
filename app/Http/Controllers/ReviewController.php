@@ -11,6 +11,7 @@ class ReviewController extends Controller
     {
         $validatedData = $request->validate([
             'comment' => 'required',
+            'rating' => 'required', /* Added this line */
             'user_id' => 'required',
             'cafe_id' => 'required',
         ]);

@@ -29,9 +29,8 @@
             <h4 class="mt-0">Rating</h4>
         </div>
         <div class="col-md-6">
-            <form action="" class="mb-0">
-                <button type="button" class="btn bg-transparent" style="padding: 0;"><i class="bi bi-hand-thumbs-up-fill"></i> {{$Cafe['like']}}</button>
-            </form>
+            <i class="bi bi-hand-thumbs-up-fill"></i>
+            {{$Cafe['like']}}
             <h4>Likes</h4>
         </div>
     </div>
@@ -51,7 +50,7 @@
     <form action="/cafe/{$Cafe['id']}" method="POST" class="mt-2">
         @csrf
         <div class="row">
-            <div class="col-8">
+            <div class="col-7">
                 <div class="mb-3">
                     <input type="hidden" id="userId" name="user_id" value="{{auth()->user()->id}}">
                     <input type="hidden" id="cafeId" name="cafe_id" value="{{$Cafe['id']}}">
@@ -64,9 +63,9 @@
                 </div>
                 {{-- likes and rating button --}}
             </div>
-            <div class="col-4">
+            <div class="col-5">
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-4">
                         {{-- https://laracasts.com/discuss/channels/general-discussion/how-i-can-get-selected-value-option --}}
                         {{-- Coba check link diatas buat ambil value di select input --}}
                         <select class="form-select" name="rate">
@@ -76,6 +75,10 @@
                             <option value="4">Four Stars</option>
                             <option value="5">Five Stars</option>
                         </select>
+                    </div>
+                    <div class="col-2 d-flex justify-content-center align-items-center">
+                        <input type="checkbox" id="likeBox" name="like" class="form-check-input">
+                        <label for="likeBox" class="form-check-label bi bi-hand-thumbs-up-fill"></label>
                     </div>
                     <div class="col-6">
                         <button type="submit" class="btn btn-success bi bi-pencil fs-8"> Comment & Rating</button>
