@@ -15,6 +15,11 @@ class review extends Model
         $reviews = DB::table('reviews')->where('cafe_id', $id)->get();
         return $reviews;
     }
+    static function getRating($id)
+    {
+        $rating = DB::table('reviews')->where('cafe_id', $id)->avg('rating');
+        return round($rating, 1);
+    }
     public function cafe()
     {
         return $this->belongsTo(cafe::class);

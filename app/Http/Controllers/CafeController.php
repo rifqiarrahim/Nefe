@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\cafe;
+use App\Models\review;
 use Illuminate\Support\Facades\DB;
 
 class CafeController extends Controller
@@ -17,14 +18,15 @@ class CafeController extends Controller
         }
 
         return view('home', [
-            "dbCafe" => $dbCafe -> paginate(9)
+            "dbCafe" => $dbCafe->paginate(9)
         ]);
     }
-    
+
     public function show($id)
     {
         return view('cafe', [
             "Cafe" => cafe::find($id),
+            "rating" => review::getRating($id),
         ]);
     }
 }

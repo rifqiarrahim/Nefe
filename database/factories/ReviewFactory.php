@@ -18,6 +18,7 @@ class ReviewFactory extends Factory
     {
         return [
             'user_id' => mt_rand(1, 15),
+            'rating' => $this->faker->numberBetween(1, 5),
             'comment' => $this->faker->sentence(mt_rand(2, 8)),
             'cafe_id' => mt_rand(1, 30),
             'created_at' => $this->faker->dateTimeThisYear(),
