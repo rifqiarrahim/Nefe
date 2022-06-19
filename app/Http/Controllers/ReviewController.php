@@ -9,11 +9,12 @@ class ReviewController extends Controller
 {
     public function store(Request $request)
     {
+
         if ($request->get('like') == null) {
             $request->request->add(['like' => 0]);
         } else {
             $request->merge([
-                'like' => 0,
+                'like' => 1,
             ]);
         }
         $validatedData = $request->validate([

@@ -18,6 +18,13 @@ return new class extends Migration
             $table->string('name');
             $table->string('address');
             $table->longText('description');
+            $table->string('openhour');
+            $table->string('openday');
+            $table->integer('price');
+            $table->string('image1');
+            $table->string('image2');
+            $table->string('image3');
+            $table->string('image4');
             $table->timestamps();
         });
     }

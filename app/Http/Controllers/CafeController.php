@@ -12,7 +12,6 @@ class CafeController extends Controller
     public function index()
     {
         $dbCafe = cafe::latest();
-
         if (request('search')) {
             $dbCafe->where('name', 'like', '%' . request('search') . '%');
         }

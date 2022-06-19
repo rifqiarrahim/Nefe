@@ -66,7 +66,6 @@
             </div>
         </div>
     </div>
-    </div>
 
     <div class="container mt-3" id="cardCont">
         <div class="row">
